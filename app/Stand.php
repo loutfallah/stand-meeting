@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stand extends Model
 {
     
-    protected $fillable = [ 'id', 'description', 'status','theme_id', 'espace_exposition_id'];
+    protected $fillable = [ 'id', 'description', 'name','theme_id','statu_id', 'espace_exposition_id'];
 
     public function theme() {
         return $this->belongsTo('App\theme');
@@ -34,5 +34,8 @@ class Stand extends Model
     }
     public function espaceExposition() {
         return $this->belongsTo('App\Espace_exposition');
+    }
+    public function statu() {
+        return $this->belongsTo('App\Statu');
     }
 }

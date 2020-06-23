@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'exposant-api' => [
+            'driver' => 'token',
+            'provider' => 'exposants',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +74,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'exposants' => [
+            'driver' => 'eloquent',
+            'model' => App\Exceptions::class,
         ],
 
         // 'users' => [
@@ -95,6 +104,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'exposants' => [
+            'provider' => 'exposants',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

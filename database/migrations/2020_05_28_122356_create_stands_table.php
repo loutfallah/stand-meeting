@@ -16,11 +16,13 @@ class CreateStandsTable extends Migration
         Schema::create('stands', function (Blueprint $table) {
             $table->id();
             $table->text('description');
-            $table->string('status');
+            $table->string('name');
             $table->unsignedBigInteger('theme_id');
             $table->foreign('theme_id')->references('id')->on('themes');
             $table->unsignedBigInteger('espace_exposition_id');
             $table->foreign('espace_exposition_id')->references('id')->on('espace_expositions');
+            $table->unsignedBigInteger('statu_id');
+            $table->foreign('statu_id')->references('id')->on('status');
             $table->timestamps();
         });
     }

@@ -14,8 +14,9 @@ class StandController extends Controller
      */
     public function index()
     {
-        $stand = Stand::with('reseau','video','lienExtern','galerie','temoignage','Document')->get();
+        $stand = Stand::with('reseau','video','lienExtern','galerie','temoignage','Document','statu')->get();
         /* $stand = Stand::all(); */
+        /* ->where("user_id", "=",auth()->user()->id) */
 
         return $stand ;
     }
@@ -40,7 +41,8 @@ class StandController extends Controller
     {
         $stand = new Stand();
         $stand->description = $request->description;
-        $stand->status =  $request->status;
+        $stand->name =  $request->name;
+        $stand->statu_id =  1;
         $stand->theme_id =  $request->theme_id;
         $stand->espace_exposition_id = $request->espace_exposition_id;
         $stand->save();
@@ -81,7 +83,8 @@ class StandController extends Controller
     {
         $stand = Stand::findOrFail($id);
         $stand->description = $request->description;
-        $stand->status =  $request->status;
+        $stand->name =  $request->name;
+        $stand->statu_id =  $request->statu_id;
         $stand->theme_id =  $request->theme_id;
         $stand->espace_exposition_id = $request->espace_exposition_id;
         $stand->save();
